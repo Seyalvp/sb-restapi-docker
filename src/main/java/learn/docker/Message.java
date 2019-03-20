@@ -1,8 +1,23 @@
 package learn.docker;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Objects;
 
 public class Message {
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Id
+    private String id;
+
+    private String msg;
 
     public Message(String msg) {
         this.msg = msg;
@@ -29,7 +44,11 @@ public class Message {
         return Objects.hash(msg);
     }
 
-    private String msg;
-
-
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id='" + id + '\'' +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }
